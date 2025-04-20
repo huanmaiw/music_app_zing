@@ -43,19 +43,19 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 8,),
-        const Padding(
-          padding:  EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+        Padding(
+          padding:  const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
+              const Text(
                 "Playlist gợi ý",
                 style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(height: 12),
+              const SizedBox(height: 12),
               PlaylistSection(),
             ],
           ),

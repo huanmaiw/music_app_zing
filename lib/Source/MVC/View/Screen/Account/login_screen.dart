@@ -11,6 +11,8 @@ class LoginView extends StatelessWidget {
   final emailCtrl = TextEditingController();
   final passCtrl = TextEditingController();
 
+  LoginView({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,9 +23,9 @@ class LoginView extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // Logo or app name
-            Center(
+            const Center(
               child: Column(
-                children: const [
+                children: [
                   Icon(Icons.music_note, color: Colors.white, size: 64),
                   SizedBox(height: 8),
                   Text(
@@ -36,10 +38,10 @@ class LoginView extends StatelessWidget {
             ),
             TextField(
               controller: emailCtrl,
-              style: TextStyle(color: Colors.white),
+              style: const TextStyle(color: Colors.white),
               decoration: InputDecoration(
                 hintText: "Email",
-                hintStyle: TextStyle(color: Colors.white70),
+                hintStyle: const TextStyle(color: Colors.white70),
                 filled: true,
                 fillColor: Colors.deepPurple.shade700,
                 border: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: BorderSide.none),
@@ -49,10 +51,10 @@ class LoginView extends StatelessWidget {
             TextField(
               controller: passCtrl,
               obscureText: true,
-              style: TextStyle(color: Colors.white),
+              style: const TextStyle(color: Colors.white),
               decoration: InputDecoration(
                 hintText: "Mật khẩu",
-                hintStyle: TextStyle(color: Colors.white70),
+                hintStyle: const TextStyle(color: Colors.white70),
                 filled: true,
                 fillColor: Colors.deepPurple.shade700,
                 border: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: BorderSide.none),

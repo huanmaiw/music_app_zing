@@ -16,9 +16,9 @@ class MainHome extends StatelessWidget {
   Widget build(BuildContext context) {
     final List<Widget> screen =[
       HomeScreen(),
-      FindScreen(),
-      RankScreen(),
-      AccountScreen(),
+      const FindScreen(),
+      const RankScreen(),
+      const AccountScreen(),
     ];
     return Obx(()=>
         Scaffold(
