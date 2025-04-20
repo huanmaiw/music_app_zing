@@ -7,5 +7,5 @@ import 'package:zingmp5/Source/MVC/View/Screen/account_screen.dart';
 final routes = [
   GetPage(name: '/', page: () => LoginView()),
   GetPage(name: '/register', page: () => RegisterView()),
-  GetPage(name: '/account', page: () => AccountScreen()), // thêm dòng này
+  GetPage(name: '/account', page: () => const AccountScreen()), // thêm dòng này
 ];

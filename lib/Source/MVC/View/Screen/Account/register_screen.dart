@@ -8,6 +8,8 @@ class RegisterView extends StatelessWidget {
   final emailCtrl = TextEditingController();
   final passCtrl = TextEditingController();
 
+  RegisterView({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,9 +20,9 @@ class RegisterView extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // Logo + tiêu đề
-            Center(
+            const Center(
               child: Column(
-                children: const [
+                children: [
                   Icon(Icons.app_registration_rounded, color: Colors.white, size: 64),
                   SizedBox(height: 8),
                   Text(

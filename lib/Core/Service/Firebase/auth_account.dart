@@ -14,7 +14,14 @@ class AuthViewModel extends GetxController {
       Get.snackbar("Lỗi", e.toString());
     }
   }
-
+  Future<void> resetPassword(String email) async {
+    try {
+      await _auth.sendPasswordResetEmail(email: email);
+      Get.snackbar("Thành công", "Email đặt lại mật khẩu đã được gửi.");
+    } catch (e) {
+      Get.snackbar("Lỗi", e.toString());
+    }
+  }
 
   Future<void> login(String email, String password) async {
     try {
