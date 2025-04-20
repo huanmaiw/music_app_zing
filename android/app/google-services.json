@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "318699214376",
+    "project_id": "huanmaiw-4c945",
+    "storage_bucket": "huanmaiw-4c945.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:318699214376:android:2ceec98e7b1df9fdb5c71d",
+        "android_client_info": {
+          "package_name": "com.example.zingmp5"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA0PHq8sVHlO8RzLg1XBUJIr-cmz2IrpkM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
