@@ -1,15 +1,13 @@
-class SongModel {
+class Song {
   final String title;
   final String artist;
   final String imageUrl;
-  final String url;
   final Duration duration;
 
-  SongModel({
+  Song({
     required this.title,
     required this.artist,
     required this.imageUrl,
-    required this.url,
     required this.duration,
   });
 }

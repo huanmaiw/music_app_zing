@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:zingmp5/Source/Widgets/account_header.dart';
-import 'package:zingmp5/Source/Widgets/feature_grid.dart';
 import 'package:zingmp5/Source/Widgets/upgrade_card.dart';
 class AccountScreen extends StatelessWidget {
   const AccountScreen({super.key});
@@ -19,12 +18,6 @@ class AccountScreen extends StatelessWidget {
               SizedBox(height: 20),
               UpgradeCard(),
               SizedBox(height: 24),
-              Text(
-                "Trải nghiệm nâng cao",
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-              ),
-              SizedBox(height: 12),
-              FeatureGrid(),
             ],
           ),
         ),
