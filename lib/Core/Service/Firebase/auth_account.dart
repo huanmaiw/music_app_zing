@@ -27,6 +27,7 @@ class AuthViewModel extends GetxController {
     try {
       await _auth.signInWithEmailAndPassword(email: email, password: password);
       Get.snackbar("Thành công", "Đăng nhập thành công");
+      Get.offAllNamed('/home');
     } catch (e) {
       Get.snackbar("Lỗi", e.toString());
     }

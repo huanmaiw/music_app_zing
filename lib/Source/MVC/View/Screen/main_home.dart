@@ -17,7 +17,7 @@ class MainHome extends StatelessWidget {
     final List<Widget> screen =[
       HomeScreen(),
       const FindScreen(),
-      const RankScreen(),
+      RankScreen(),
       const AccountScreen(),
     ];
     return Obx(()=>
@@ -26,8 +26,6 @@ class MainHome extends StatelessWidget {
           body: screen [controller.currentIndex.value],
           bottomNavigationBar:const MainBottomNav(),
         )
-
-
     );
   }
 }

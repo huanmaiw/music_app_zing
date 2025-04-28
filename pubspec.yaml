@@ -72,7 +72,12 @@ flutter:
      - assets/slider_image/
      - assets/recommen/
      - assets/lg.jpeg
-
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/iapp2.png"  # Đường dẫn đến file icon
+  adaptive_icon_background: "#FFFFFF"  # Màu nền cho icon trên Android (Adaptive Icon)
+  adaptive_icon_foreground: "assets/iapp2.png"
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
 
