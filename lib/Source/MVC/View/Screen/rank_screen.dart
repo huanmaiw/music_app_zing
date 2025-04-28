@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 import 'package:zingmp5/Source/MVC/Controller/rank_controller.dart';
 import 'package:zingmp5/Source/MVC/Model/chart_item_model.dart';
 
+import 'music_player_screen.dart';
+
 class RankScreen extends StatelessWidget {
   final rankController = Get.put(RankController());
 
@@ -15,32 +17,15 @@ class RankScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: const Text(
-          'Bảng xếp hạng',
-          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+        title: const Center(
+          child:  Text(
+            'Bảng xếp hạng',
+            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          ),
         ),
-        // actions: [
-        //   IconButton(
-        //     icon: const Icon(Icons.search, color: Colors.white),
-        //     onPressed: () {},
-        //   ),
-        // ],
       ),
       body: Column(
         children: [
-          // const Padding(
-          //   padding: EdgeInsets.symmetric(horizontal: 16.0),
-          //   child: Row(
-          //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          //     children: [
-          //       // Text(
-          //       //   '19.04.2025 - 15:22',
-          //       //   style: TextStyle(color: Colors.white70, fontSize: 13),
-          //       // ),
-          //       Icon(Icons.bar_chart, color: Colors.white70),
-          //     ],
-          //   ),
-          // ),
           const SizedBox(height: 20),
           Expanded(
             child: Container(
@@ -66,7 +51,6 @@ class RankScreen extends StatelessWidget {
     );
   }
 }
-
 class ChartListItem extends StatelessWidget {
   final ChartItemModel item;
 
@@ -74,52 +58,53 @@ class ChartListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8),
-      child: Row(
-        children: [
-          Text(
-            '${item.rank}',
-            style: TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-              color: Colors.purple.shade700,
+    return InkWell( // <-- Bọc InkWell để bắt sự kiện tap
+      onTap: () {
+        Get.to(() => MusicPlayerScreen(
+          image: item.asset,
+          title: item.title,
+          artists: item.artist,
+          audioUrl: item.audioUrl, // <-- thêm audioUrl
+        ));
+      },
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 8),
+        child: Row(
+          children: [
+            const SizedBox(width: 12),
+            ClipRRect(
+              borderRadius: BorderRadius.circular(8),
+              child: Image.asset(
+                item.asset,
+                width: 50,
+                height: 50,
+                fit: BoxFit.cover,
+              ),
             ),
-          ),
-          const SizedBox(width: 12),
-          ClipRRect(
-            borderRadius: BorderRadius.circular(8),
-            child: Image.asset(
-              item.asset,
-              width: 50,
-              height: 50,
-              fit: BoxFit.cover,
-            ),
-          ),
-          const SizedBox(width: 12),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  item.title,
-                  style: const TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.w600,
+            const SizedBox(width: 12),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    item.title,
+                    style: const TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
-                ),
-                Text(
-                  item.artist,
-                  style: const TextStyle(
-                    fontSize: 13,
-                    color: Colors.grey,
+                  Text(
+                    item.artist,
+                    style: const TextStyle(
+                      fontSize: 13,
+                      color: Colors.grey,
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-          const Icon(Icons.more_vert),
-        ],
+          ],
+        ),
       ),
     );
   }

@@ -8,13 +8,7 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build (BuildContext context){
     return AppBar(
       automaticallyImplyLeading: false,
-      title: const Text("MUSIC APP BY MCHIEN", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.purple),),
-      actions: [
-        IconButton(
-          onPressed: () {},
-          icon: const Icon(Icons.search, color: Colors.purple,),
-        ),
-      ],
+      title: const Text("CHIEN-21250620-K12CNNTT03", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.purple),),
     );
   }
 }

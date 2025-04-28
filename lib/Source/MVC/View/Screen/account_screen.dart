@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:zingmp5/Source/MVC/Controller/account_controller.dart';
 import 'package:zingmp5/Source/Widgets/account_header.dart';
 import 'package:zingmp5/Source/Widgets/upgrade_card.dart';
 class AccountScreen extends StatelessWidget {
@@ -6,6 +8,7 @@ class AccountScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Get.put(AccountController());
     return const Scaffold(
       backgroundColor:  Color(0xFFF7F7F7),
       body: SafeArea(

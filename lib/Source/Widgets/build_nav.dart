@@ -35,6 +35,7 @@ class NavCircleButton extends StatelessWidget {
         Text(
           label,
           style: const TextStyle(
+            color: Colors.purple,
             fontSize: 14,
             fontWeight: FontWeight.w500,
           ),

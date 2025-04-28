@@ -20,10 +20,10 @@ class LoginView extends GetView<LoginController> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Center(
+             Center(
               child: Column(
                 children: [
-                  Icon(Icons.music_note, color: Colors.white, size: 64),
+                  Image.network("https://tructuyen.utm.edu.vn/images/logo.png"),
                   SizedBox(height: 8),
                   SizedBox(height: 40),
                 ],

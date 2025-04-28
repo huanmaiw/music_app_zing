@@ -14,10 +14,10 @@ class ForgotPasswordView extends GetView<ForgotPasswordController> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Center(
+             Center(
               child: Column(
                 children: [
-                  Icon(Icons.lock_reset_rounded, color: Colors.white, size: 64),
+                  Image.network("https://tructuyen.utm.edu.vn/images/logo.png"),
                   SizedBox(height: 8),
                   Text(
                     "Quên mật khẩu",
