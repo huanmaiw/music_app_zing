@@ -1,24 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:zingmp5/Source/MVC/Controller/home_controller.dart';
 import 'package:zingmp5/Source/Widgets/build_nav.dart';
 import 'package:zingmp5/Source/Widgets/images_slider.dart';
 import 'package:zingmp5/Source/Widgets/playlist_section.dart';
 
 class HomeScreen extends StatelessWidget {
-  final List<String> images = [
-    "assets/slider_image/sl1.jpg",
-    "assets/slider_image/sl2.jpg",
-    "assets/slider_image/sl3.jpg",
-    "assets/slider_image/sl4.jpg",
-    "assets/slider_image/sl5.jpg",
-  ];
+  final homeController = Get.put(HomeController());
+
   HomeScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        ImageSlider(imageUrls: images),
+        ImageSlider(imageUrls: homeController.images),
         const SizedBox(
-          child: Padding(padding: EdgeInsets.symmetric(horizontal: 16, vertical:20 ),
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 20),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
@@ -42,9 +41,9 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
         ),
-        const SizedBox(height: 8,),
+        const SizedBox(height: 8),
         Padding(
-          padding:  const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -60,7 +59,6 @@ class HomeScreen extends StatelessWidget {
             ],
           ),
         ),
-
       ],
     );
   }

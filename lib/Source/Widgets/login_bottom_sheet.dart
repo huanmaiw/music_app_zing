@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:zingmp5/Source/MVC/Controller/login_controller.dart';
 import 'package:zingmp5/Source/MVC/View/Screen/Account/login_screen.dart';
 
 class LoginBottomSheet extends StatelessWidget {
@@ -27,7 +29,8 @@ class LoginBottomSheet extends StatelessWidget {
           const SizedBox(height: 12),
           ElevatedButton(
             onPressed: () {
-             Navigator.push(context, MaterialPageRoute(builder: (context)=>LoginView()));
+              Get.lazyPut(() => LoginController());
+            Get.to(const LoginView());
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.blue,

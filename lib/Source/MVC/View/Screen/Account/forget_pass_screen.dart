@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:zingmp5/Core/Service/Firebase/auth_account.dart';
+import 'package:zingmp5/Source/MVC/Controller/forgot_password_controller.dart';
 
-class ForgotPasswordView extends StatelessWidget {
-  final emailCtrl = TextEditingController();
-  final authVM = Get.find<AuthViewModel>();
-
-  ForgotPasswordView({super.key});
+class ForgotPasswordView extends GetView<ForgotPasswordController> {
+  const ForgotPasswordView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +28,7 @@ class ForgotPasswordView extends StatelessWidget {
               ),
             ),
             TextField(
-              controller: emailCtrl,
+              controller: controller.emailCtrl,
               style: const TextStyle(color: Colors.white),
               decoration: InputDecoration(
                 hintText: "Nhập email của bạn",
@@ -49,12 +46,12 @@ class ForgotPasswordView extends StatelessWidget {
               width: double.infinity,
               height: 48,
               child: ElevatedButton(
-                onPressed: () =>authVM.resetPassword(emailCtrl.text.trim()),
+                onPressed: controller.resetPassword,
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.purpleAccent.shade200,
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                 ),
-                child: const Text("Gửi email đặt lại mật khẩu", style: TextStyle(fontSize: 16,color: Colors.white)),
+                child: const Text("Gửi email đặt lại mật khẩu", style: TextStyle(fontSize: 16, color: Colors.white)),
               ),
             ),
             const SizedBox(height: 16),

@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:zingmp5/Source/MVC/Controller/rank_controller.dart';
+import 'package:zingmp5/Source/MVC/Model/chart_item_model.dart';
 
 class RankScreen extends StatelessWidget {
-  const RankScreen({super.key});
+  final rankController = Get.put(RankController());
+
+  RankScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,15 +29,15 @@ class RankScreen extends StatelessWidget {
       body: Column(
         children: [
           const Padding(
-            padding:  EdgeInsets.symmetric(horizontal: 16.0),
+            padding: EdgeInsets.symmetric(horizontal: 16.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children:  [
+              children: [
                 Text(
                   '19.04.2025 - 15:22',
                   style: TextStyle(color: Colors.white70, fontSize: 13),
                 ),
-                Icon(Icons.bar_chart, color: Colors.white70)
+                Icon(Icons.bar_chart, color: Colors.white70),
               ],
             ),
           ),
@@ -47,30 +52,15 @@ class RankScreen extends StatelessWidget {
                   topRight: Radius.circular(20),
                 ),
               ),
-              child: ListView(
-                children: const [
-                  ChartListItem(
-                    rank: 1,
-                    title: 'Bắc Bling (Bắc Ninh)',
-                    artist: 'Hòa Minzy, Xuân Hinh, Tuấn Cry',
-                    asset: 'assets/recommen/rcm1.jpg',
-                  ),
-                  ChartListItem(
-                    rank: 2,
-                    title: 'Sorry, Anh Mất Em Rồi!',
-                    artist: 'Ogenus, Orange',
-                    asset: 'assets/recommen/rcm2.jpg',
-                  ),
-                  ChartListItem(
-                    rank: 3,
-                    title: 'Nước Mắt Cá Sấu',
-                    artist: 'HIEUTHUHAI',
-                    asset: 'assets/recommen/rcm3.jpg',
-                  ),
-                ],
-              ),
+              child: Obx(() => ListView.builder(
+                itemCount: rankController.chartItems.length,
+                itemBuilder: (context, index) {
+                  final item = rankController.chartItems[index];
+                  return ChartListItem(item: item);
+                },
+              )),
             ),
-          )
+          ),
         ],
       ),
     );
@@ -78,18 +68,9 @@ class RankScreen extends StatelessWidget {
 }
 
 class ChartListItem extends StatelessWidget {
-  final int rank;
-  final String title;
-  final String artist;
-  final String asset;
+  final ChartItemModel item;
 
-  const ChartListItem({
-    required this.rank,
-    required this.title,
-    required this.artist,
-    required this.asset,
-    super.key,
-  });
+  const ChartListItem({required this.item, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -98,7 +79,7 @@ class ChartListItem extends StatelessWidget {
       child: Row(
         children: [
           Text(
-            '$rank',
+            '${item.rank}',
             style: TextStyle(
               fontSize: 24,
               fontWeight: FontWeight.bold,
@@ -109,7 +90,7 @@ class ChartListItem extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(8),
             child: Image.asset(
-              asset,
+              item.asset,
               width: 50,
               height: 50,
               fit: BoxFit.cover,
@@ -121,14 +102,14 @@ class ChartListItem extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  title,
+                  item.title,
                   style: const TextStyle(
                     fontSize: 15,
                     fontWeight: FontWeight.w600,
                   ),
                 ),
                 Text(
-                  artist,
+                  item.artist,
                   style: const TextStyle(
                     fontSize: 13,
                     color: Colors.grey,

@@ -1,14 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:zingmp5/Core/Service/Firebase/auth_account.dart';
+import 'package:zingmp5/Source/MVC/Controller/register_controller.dart';
 
-class RegisterView extends StatelessWidget {
-  final authVM = Get.find<AuthViewModel>();
-
-  final emailCtrl = TextEditingController();
-  final passCtrl = TextEditingController();
-
-  RegisterView({super.key});
+class RegisterView extends GetView<RegisterController> {
+  const RegisterView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +14,6 @@ class RegisterView extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Logo + tiêu đề
             const Center(
               child: Column(
                 children: [
@@ -33,9 +27,8 @@ class RegisterView extends StatelessWidget {
                 ],
               ),
             ),
-
             TextField(
-              controller: emailCtrl,
+              controller: controller.emailCtrl,
               style: const TextStyle(color: Colors.white),
               decoration: InputDecoration(
                 hintText: "Email",
@@ -50,7 +43,7 @@ class RegisterView extends StatelessWidget {
             ),
             const SizedBox(height: 16),
             TextField(
-              controller: passCtrl,
+              controller: controller.passCtrl,
               obscureText: true,
               style: const TextStyle(color: Colors.white),
               decoration: InputDecoration(
@@ -65,26 +58,22 @@ class RegisterView extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 24),
-
             SizedBox(
               width: double.infinity,
               height: 48,
               child: ElevatedButton(
-                onPressed: () => authVM.register(emailCtrl.text, passCtrl.text),
+                onPressed: controller.register,
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.purpleAccent.shade200,
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                 ),
-                child: const Text("Đăng ký", style: TextStyle(fontSize: 16)),
+                child: const Text("Đăng ký", style: TextStyle(fontSize: 16, color: Colors.white)),
               ),
             ),
-
             const SizedBox(height: 16),
             Center(
               child: TextButton(
-                onPressed: () {
-                  Get.back(); // Quay lại màn login
-                },
+                onPressed: () => Get.back(),
                 child: const Text(
                   "Đã có tài khoản? Đăng nhập",
                   style: TextStyle(color: Colors.white70),

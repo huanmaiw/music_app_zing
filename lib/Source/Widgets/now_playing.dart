@@ -1,71 +1,13 @@
-import 'dart:ui';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:just_audio/just_audio.dart';
+import 'package:zingmp5/Source/MVC/Controller/now_playing_controller.dart';
 
-class SongModel {
-  final String title;
-  final String artist;
-  final String imageUrl;
-  final String url;
-  final Duration duration;
-
-  SongModel({
-    required this.title,
-    required this.artist,
-    required this.imageUrl,
-    required this.url,
-    required this.duration,
-  });
-}
-
-class NowPlayingController extends GetxController {
-  final AudioPlayer player = AudioPlayer();
-
-  var currentSong = SongModel(
-    title: 'Bắc Bling (Bắc Ninh)',
-    artist: 'Hòa Minzy, Xuân Hinh, Tuấn Cry',
-    imageUrl: 'https://i.imgur.com/xh8VCFf.jpeg',
-    url: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3',
-    duration: const Duration(minutes: 4, seconds: 5),
-  ).obs;
-
-  var position = Duration.zero.obs;
-  var duration = const Duration(minutes: 4, seconds: 5).obs;
-  var isPlaying = false.obs;
-
-  @override
-  void onInit() {
-    super.onInit();
-    setupAudio();
-  }
-
-  void setupAudio() async {
-    await player.setUrl(currentSong.value.url);
-    player.positionStream.listen((pos) => position.value = pos);
-    player.playerStateStream.listen((state) {
-      isPlaying.value = state.playing;
-    });
-  }
-
-  void playPause() {
-    isPlaying.value ? player.pause() : player.play();
-  }
-
-  void seekTo(double seconds) {
-    player.seek(Duration(seconds: seconds.toInt()));
-  }
-
-  String formatTime(Duration d) {
-    return d.toString().split('.').first.substring(2, 7);
-  }
-}
+import 'blur_background.dart';
 
 class NowPlayingPage extends StatelessWidget {
   final controller = Get.put(NowPlayingController());
 
-   NowPlayingPage({super.key});
+  NowPlayingPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -200,28 +142,4 @@ class NowPlayingPage extends StatelessWidget {
       ],
     ),
   );
-}
-
-class BlurBackground extends StatelessWidget {
-  final String imageUrl;
-
-  const BlurBackground({super.key, required this.imageUrl});
-
-  @override
-  Widget build(BuildContext context) {
-    return Stack(
-      fit: StackFit.expand,
-      children: [
-        CachedNetworkImage(
-          imageUrl: imageUrl,
-          fit: BoxFit.cover,
-        ),
-        Container(color: Colors.black.withOpacity(0.4)),
-        BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 25, sigmaY: 25),
-          child: Container(color: Colors.transparent),
-        ),
-      ],
-    );
-  }
 }

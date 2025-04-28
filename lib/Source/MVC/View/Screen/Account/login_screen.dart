@@ -1,20 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:zingmp5/Core/Service/Firebase/auth_account.dart';
+import 'package:zingmp5/Source/MVC/Controller/forgot_password_controller.dart';
+import 'package:zingmp5/Source/MVC/Controller/login_controller.dart';
+import 'package:zingmp5/Source/MVC/Controller/register_controller.dart';
 
 import 'forget_pass_screen.dart';
 import 'register_screen.dart';
 
-class LoginView extends StatelessWidget {
-  final authVM = Get.put(AuthViewModel());
-
-  final emailCtrl = TextEditingController();
-  final passCtrl = TextEditingController();
-
-  LoginView({super.key});
+class LoginView extends GetView<LoginController> {
+  const LoginView({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final LoginController controller = Get.find<LoginController>();
     return Scaffold(
       backgroundColor: Colors.deepPurple.shade900,
       body: SingleChildScrollView(
@@ -22,34 +20,31 @@ class LoginView extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Logo or app name
             const Center(
               child: Column(
                 children: [
                   Icon(Icons.music_note, color: Colors.white, size: 64),
                   SizedBox(height: 8),
-                  Text(
-                    "Zing MP5",
-                    style: TextStyle(fontSize: 28, color: Colors.white, fontWeight: FontWeight.bold),
-                  ),
                   SizedBox(height: 40),
                 ],
               ),
             ),
             TextField(
-              controller: emailCtrl,
+              controller: controller.emailCtrl,
               style: const TextStyle(color: Colors.white),
               decoration: InputDecoration(
                 hintText: "Email",
                 hintStyle: const TextStyle(color: Colors.white70),
                 filled: true,
                 fillColor: Colors.deepPurple.shade700,
-                border: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: BorderSide.none),
+                border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                    borderSide: BorderSide.none),
               ),
             ),
             const SizedBox(height: 16),
             TextField(
-              controller: passCtrl,
+              controller: controller.passCtrl,
               obscureText: true,
               style: const TextStyle(color: Colors.white),
               decoration: InputDecoration(
@@ -57,7 +52,9 @@ class LoginView extends StatelessWidget {
                 hintStyle: const TextStyle(color: Colors.white70),
                 filled: true,
                 fillColor: Colors.deepPurple.shade700,
-                border: OutlineInputBorder(borderRadius: BorderRadius.circular(12), borderSide: BorderSide.none),
+                border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                    borderSide: BorderSide.none),
               ),
             ),
             const SizedBox(height: 24),
@@ -65,12 +62,14 @@ class LoginView extends StatelessWidget {
               width: double.infinity,
               height: 48,
               child: ElevatedButton(
-                onPressed: () => authVM.login(emailCtrl.text, passCtrl.text),
+                onPressed: controller.login,
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.purpleAccent.shade200,
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12)),
                 ),
-                child: const Text("Đăng nhập", style: TextStyle(fontSize: 16,color: Colors.white)),
+                child: const Text("Đăng nhập",
+                    style: TextStyle(fontSize: 16, color: Colors.white)),
               ),
             ),
             const SizedBox(height: 16),
@@ -79,17 +78,19 @@ class LoginView extends StatelessWidget {
               children: [
                 TextButton(
                   onPressed: () {
-                    Get.to(() => ForgotPasswordView());
+                    Get.lazyPut(() => ForgotPasswordController());
+                    Get.to(() => const ForgotPasswordView());
                   },
-                  child: const Text("Quên mật khẩu?", style: TextStyle(color: Colors.white70)),
+                  child: const Text("Quên mật khẩu?",
+                      style: TextStyle(color: Colors.white70)),
                 ),
               ],
             ),
-
             Center(
               child: TextButton(
                 onPressed: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => RegisterView()));
+                  Get.lazyPut(() => RegisterController());
+                  Get.to(() => const RegisterView());
                 },
                 child: const Text(
                   "Chưa có tài khoản? Đăng ký",
