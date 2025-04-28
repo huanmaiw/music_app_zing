@@ -31,7 +31,7 @@ class SplashController extends GetxController with GetSingleTickerProviderStateM
     // Navigate to the next screen after animation completes
     _animationController.addStatusListener((status) {
       if (status == AnimationStatus.completed) {
-        Get.offNamed('/main'); // Replace with your desired route
+        Get.offNamed('/login'); // Replace with your desired route
       }
     });
   }

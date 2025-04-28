@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import 'feature_icon.dart';
 
@@ -13,16 +14,16 @@ class UpgradeCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
       ),
       padding: const EdgeInsets.all(16),
-      child: const Column(
+      child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
             children: [
-              Text(
-                "Zing MP3 ",
+              const Text(
+                "Zing MP5 ",
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
               ),
-              Text(
+              const Text(
                 "PLUS",
                 style: TextStyle(
                   fontSize: 14,
@@ -30,22 +31,28 @@ class UpgradeCard extends StatelessWidget {
                   color: Colors.purple,
                 ),
               ),
-              Spacer(),
-              Icon(Icons.chevron_right),
+              const Spacer(),
+              IconButton(onPressed: (){
+                Get.snackbar("Thông báo", "Chức năng này đang được phát triển",
+                    backgroundColor: Colors.red,
+                    colorText: Colors.white,
+                );
+                },
+                  icon: const Icon(Icons.chevron_right)),
             ],
           ),
-          SizedBox(height: 8),
-          Text(
-            "19,000đ",
+          const SizedBox(height: 8),
+          const Text(
+            "30,000,000đ",
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
-          SizedBox(height: 4),
-          Text(
+          const SizedBox(height: 4),
+          const Text(
             "Nghe nhạc không quảng cáo, mở khóa các tính năng nâng cao",
             style: TextStyle(fontSize: 14),
           ),
-          SizedBox(height: 12),
-          Row(
+          const SizedBox(height: 12),
+          const Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children:  [
               FeatureIcon(icon: Icons.block, text: "Loại bỏ toàn bộ\nquảng cáo"),

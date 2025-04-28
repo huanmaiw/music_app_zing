@@ -22,27 +22,7 @@ class PlaylistSection extends StatelessWidget {
    PlaylistSection({super.key});
 
   final List<SongModel> songs = [
-     SongModel(
-      title: "Flow Này Mượt Phết",
-      artist: "VSTRA, 52Hz, tlinh, CoolKid",
-      imageUrl: "assets/recommen/rcm1.jpg",
-      url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3",
-      duration: const Duration(minutes: 3, seconds: 45),
-    ),
-    SongModel(
-      title: "Thiên lý ơi",
-      artist: "Jack",
-      imageUrl: "assets/recommen/rcm2.jpg",
-      url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3",
-      duration: const Duration(minutes: 4, seconds: 15),
-    ),
-     SongModel(
-      title: "Xin đừng KS của anh",
-      artist: "Sơn Tường MVP",
-      imageUrl: "assets/recommen/rcm3.jpg",
-      url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3",
-      duration:const Duration(minutes: 4, seconds: 5),
-    ),
+
   ];
 
   Widget _buildPlaylistItem({

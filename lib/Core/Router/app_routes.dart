@@ -36,6 +36,7 @@ class AppPages {
       page: () => const LoginView(),
       binding: BindingsBuilder(() {
         Get.lazyPut(() => LoginController());
+        Get.lazyPut(() => AuthViewModel());
       }),
     ),
     GetPage(

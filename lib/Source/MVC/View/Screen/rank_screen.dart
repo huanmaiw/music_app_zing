@@ -16,31 +16,31 @@ class RankScreen extends StatelessWidget {
         backgroundColor: Colors.transparent,
         elevation: 0,
         title: const Text(
-          '#zingchart',
+          'Bảng xếp hạng',
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.search, color: Colors.white),
-            onPressed: () {},
-          ),
-        ],
+        // actions: [
+        //   IconButton(
+        //     icon: const Icon(Icons.search, color: Colors.white),
+        //     onPressed: () {},
+        //   ),
+        // ],
       ),
       body: Column(
         children: [
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  '19.04.2025 - 15:22',
-                  style: TextStyle(color: Colors.white70, fontSize: 13),
-                ),
-                Icon(Icons.bar_chart, color: Colors.white70),
-              ],
-            ),
-          ),
+          // const Padding(
+          //   padding: EdgeInsets.symmetric(horizontal: 16.0),
+          //   child: Row(
+          //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          //     children: [
+          //       // Text(
+          //       //   '19.04.2025 - 15:22',
+          //       //   style: TextStyle(color: Colors.white70, fontSize: 13),
+          //       // ),
+          //       Icon(Icons.bar_chart, color: Colors.white70),
+          //     ],
+          //   ),
+          // ),
           const SizedBox(height: 20),
           Expanded(
             child: Container(

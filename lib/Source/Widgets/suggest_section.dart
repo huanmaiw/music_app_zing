@@ -7,6 +7,7 @@ class SuggestSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     final controller = Get.put(FindController());
 
     return Column(
@@ -29,15 +30,20 @@ class SuggestSection extends StatelessWidget {
           ],
         ),
         const SizedBox(height: 12),
-        Obx(() => Column(
-          children: controller.suggestions.map((item) {
-            return _buildSuggestItem(
-              image: item["image"]!,
-              title: item["title"]!,
-              artist: item["artist"]!,
-            );
-          }).toList(),
-        )),
+        Obx(() {
+          if (controller.isLoading.value) {
+            return const Center(child: CircularProgressIndicator()); // Hiển thị loading khi đang tải
+          }
+          return Column(
+            children: controller.suggestions.map((item) {
+              return _buildSuggestItem(
+                image: item["image"]!,
+                title: item["title"]!,
+                artist: item["artist"]!,
+              );
+            }).toList(),
+          );
+        }),
       ],
     );
   }
