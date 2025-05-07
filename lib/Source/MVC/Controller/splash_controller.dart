@@ -7,7 +7,6 @@ class SplashController extends GetxController with GetSingleTickerProviderStateM
   late Animation<double> scaleAnimation;
   late Animation<double> fadeAnimation;
   final SplashModel model = SplashModel();
-
   @override
   void onInit() {
     super.onInit();
