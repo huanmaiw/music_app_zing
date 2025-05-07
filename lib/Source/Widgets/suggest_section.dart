@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:zingmp5/Source/MVC/Controller/find_controller.dart';
 
+import 'detail_screen.dart';
+
 class SuggestSection extends StatelessWidget {
   const SuggestSection({super.key});
 
   @override
   Widget build(BuildContext context) {
-
     final controller = Get.put(FindController());
 
     return Column(
@@ -29,62 +30,61 @@ class SuggestSection extends StatelessWidget {
             ),
           ],
         ),
+        const SizedBox(height: 20),
+        const Text("TOP 100", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22)),
         const SizedBox(height: 12),
-        Obx(() {
-          if (controller.isLoading.value) {
-            return const Center(child: CircularProgressIndicator()); // Hiển thị loading khi đang tải
-          }
-          return Column(
-            children: controller.suggestions.map((item) {
-              return _buildSuggestItem(
-                image: item["image"]!,
-                title: item["title"]!,
-                artist: item["artist"]!,
-              );
-            }).toList(),
-          );
-        }),
+        Row(
+          children: [
+            _buildSuggestionItem(
+              imagePath: "assets/recommen/rcm1.jpg",
+              title: "Top 100 Bài Nhạc Trẻ Hay Nhất",
+            ),
+            const SizedBox(width: 15),
+            _buildSuggestionItem(
+              imagePath: "assets/recommen/rcm2.jpg",
+              title: "Top 100 POP Âu Mỹ Hay Nhất",
+            ),
+          ],
+        ),
+        const SizedBox(height: 30),
+        const Text("CHILL", style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
+        const SizedBox(height: 12),
+        Row(
+          children: [
+            _buildSuggestionItem(
+              imagePath: "assets/recommen/rcm3.jpg",
+              title: "Top 100 Chill Nhẹ Nhàng",
+            ),
+            const SizedBox(width: 15),
+            _buildSuggestionItem(
+              imagePath: "assets/banner/bn1.jpg",
+              title: "Top 100 Chill Âu Mỹ",
+            ),
+          ],
+        ),
       ],
     );
   }
 
-  Widget _buildSuggestItem({
-    required String image,
-    required String title,
-    required String artist,
-  }) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 16),
-      child: Row(
+  Widget _buildSuggestionItem({required String imagePath, required String title}) {
+    return GestureDetector(
+      onTap: () {
+        Get.to(() => DetailScreen(imagePath: imagePath, title: title));
+      },
+      child: Column(
         children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(8),
-            child: Image.asset(
-              image,
-              width: 60,
-              height: 60,
-              fit: BoxFit.cover,
+          Image.asset(imagePath, height: 150, width: 150, fit: BoxFit.cover),
+          const SizedBox(height: 8),
+          SizedBox(
+            width: 150,
+            child: Text(
+              title,
+              style: const TextStyle(fontWeight: FontWeight.bold),
+              textAlign: TextAlign.center,
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
             ),
           ),
-          const SizedBox(width: 12),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  title,
-                  style:
-                  const TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
-                  overflow: TextOverflow.ellipsis,
-                ),
-                Text(
-                  artist,
-                  style: const TextStyle(fontSize: 13, color: Colors.grey),
-                ),
-              ],
-            ),
-          ),
-          const Icon(Icons.more_vert, color: Colors.grey),
         ],
       ),
     );

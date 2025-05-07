@@ -14,16 +14,16 @@ class RegisterView extends GetView<RegisterController> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Center(
+             Center(
               child: Column(
                 children: [
-                  Icon(Icons.app_registration_rounded, color: Colors.white, size: 64),
-                  SizedBox(height: 8),
-                  Text(
+                  Image.network("https://tructuyen.utm.edu.vn/images/logo.png"),
+                  const SizedBox(height: 8),
+                  const Text(
                     "Đăng ký tài khoản",
                     style: TextStyle(fontSize: 24, color: Colors.white, fontWeight: FontWeight.bold),
                   ),
-                  SizedBox(height: 40),
+                  const SizedBox(height: 40),
                 ],
               ),
             ),

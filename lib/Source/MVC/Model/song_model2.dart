@@ -1,28 +1,56 @@
-import 'song_model.dart';
-class MusicService {
-  Future<Song> getCurrentSong() async {
-    // Giả sử bạn gọi API và nhận dữ liệu bài hát từ server
-    await Future.delayed(Duration(seconds: 2)); // Giả lập thời gian gọi API
+class Song {
+  Song({
+    required this.id,
+    required this.title,
+    required this.album,
+    required this.artist,
+    required this.source,
+    required this.image,
+    required this.duration,
+  });
+
+  factory Song.fromJson(Map<String, dynamic> map) {
     return Song(
-      title: "Bài hát hay",
-      artist: "Nghệ sĩ nổi tiếng",
-      imageUrl: "https://example.com/album_art.jpg",
-      duration: Duration(minutes: 3, seconds: 45),
+      id: map['id']?.toString() ?? '',
+      title: map['title']?.toString() ?? '',
+      album: map['album']?.toString() ?? '',
+      artist: map['artist']?.toString() ?? '',
+      source: map['source']?.toString() ?? '',
+      image: map['image']?.toString() ?? '',
+      duration: Duration(seconds: map['duration'] as int? ?? 0),
     );
   }
 
-  void playSong(Song song) {
+  String id;
+  String title;
+  String album;
+  String artist;
+  String source;
+  String image;
+  Duration duration;
 
-    print("Đang phát bài hát: ${song.title}");
+  @override
+  String toString() {
+    return 'Song{id: $id, title: $title, album: $album, artist: $artist, source: $source, image: $image, duration: $duration}';
   }
 
-  void pauseSong() {
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+          other is Song && runtimeType == other.runtimeType && id == other.id;
 
-    print("Đã tạm dừng bài hát");
-  }
+  @override
+  int get hashCode => id.hashCode;
 
-  void seekTo(Duration position) {
-
-    print("Di chuyển đến vị trí ${position.inSeconds} giây");
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'title': title,
+      'album': album,
+      'artist': artist,
+      'source': source,
+      'image': image,
+      'duration': duration.inSeconds,
+    };
   }
 }

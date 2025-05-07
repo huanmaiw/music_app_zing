@@ -10,8 +10,10 @@ class AuthViewModel extends GetxController {
   Future<void> register(String email, String password) async {
     try {
       await _auth.createUserWithEmailAndPassword(email: email, password: password);
-      Get.snackbar("Thành công", "Đăng ký thành công");
-
+      Get.snackbar("Thành công", "Đăng ki thành công",
+          snackPosition: SnackPosition.TOP,
+          backgroundColor: Colors.green,
+          colorText: Colors.white);
       Get.offAllNamed('/login');
     } catch (e) {
       Get.snackbar("Lỗi", e.toString());
@@ -36,7 +38,10 @@ class AuthViewModel extends GetxController {
       Get.lazyPut(()=>LoginController());
       Get.offAllNamed(AppRoutes.main);
     } catch (e) {
-      Get.snackbar("Lỗi", e.toString());
+      Get.snackbar("Lỗi", "Thông tin tài khoản hoặc mật khẩu không chính xác",
+          snackPosition: SnackPosition.TOP,
+          backgroundColor: Colors.green,
+          colorText: Colors.white);
     }
   }
   Future<void> changePassword(String oldPassword, String newPassword) async {
