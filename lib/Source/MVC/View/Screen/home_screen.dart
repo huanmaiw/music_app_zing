@@ -158,67 +158,6 @@ class HomeScreen extends StatelessWidget {
                       );
                     }
 
-                  //     assets/slider_image/sl7.jpg
-                  //
-                  //     https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3
-
-                  // onTap: ()
-                  //   showDialog(
-                  //     context: context,
-                  //     builder: (BuildContext context) {
-                  //       final TextEditingController imageController = TextEditingController();
-                  //       final TextEditingController titleController = TextEditingController();
-                  //       final TextEditingController artistsController = TextEditingController();
-                  //       final TextEditingController urlController = TextEditingController();
-                  //
-                  //       return AlertDialog(
-                  //         title: const Text("Thêm bài hát mới"),
-                  //         content: SingleChildScrollView(
-                  //           child: Column(
-                  //             children: [
-                  //               TextField(
-                  //                 controller: imageController,
-                  //                 decoration: const InputDecoration(labelText: "Đường dẫn hình ảnh"),
-                  //               ),
-                  //               TextField(
-                  //                 controller: titleController,
-                  //                 decoration: const InputDecoration(labelText: "Tiêu đề bài hát"),
-                  //               ),
-                  //               TextField(
-                  //                 controller: artistsController,
-                  //                 decoration: const InputDecoration(labelText: "Nghệ sĩ"),
-                  //               ),
-                  //               TextField(
-                  //                 controller: urlController,
-                  //                 decoration: const InputDecoration(labelText: "URL bài hát"),
-                  //               ),
-                  //             ],
-                  //           ),
-                  //         ),
-                  //         actions: [
-                  //           TextButton(
-                  //             onPressed: () {
-                  //               Navigator.of(context).pop();
-                  //             },
-                  //             child: const Text("Hủy"),
-                  //           ),
-                  //           TextButton(
-                  //             onPressed: () {
-                  //               homeController.addSong({
-                  //                 "image": imageController.text,
-                  //                 "title": titleController.text,
-                  //                 "artists": artistsController.text,
-                  //                 "url": urlController.text,
-                  //               });
-                  //               Navigator.of(context).pop();
-                  //             },
-                  //             child: const Text("Thêm"),
-                  //           ),
-                  //         ],
-                  //       );
-                  //     },
-                  //   );
-                  // },
                 ),
                 NavCircleButton(
                   icon: Icons.delete,
