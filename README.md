@@ -1,16 +1,42 @@
-# zingmp5
+A simple and powerful music application built with Flutter. The app supports user authentication, music playback, playlist management, and more — all following the MVC architecture and powered by GetX for efficient state management.
 
-A new Flutter project.
+📱 Features
+✅ User Authentication
 
-## Getting Started
+Register and login functionality
 
-This project is a starting point for a Flutter application.
+Firebase Authentication integration
 
-A few resources to get you started if this is your first Flutter project:
+🎵 Music Playback
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Play, pause, and control local audio files
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+❤️ Favorites & Playlists
+
+Add/remove favorite songs
+
+Create, edit, and manage playlists
+
+Data stored locally using SQLite
+
+🔍 Search Functionality
+
+Quickly find your favorite songs
+
+👤 User Profile
+
+Edit user information
+
+🔔 Push Notifications
+
+Firebase Cloud Messaging (FCM) support for real-time updates
+
+🧱 Architecture
+The project is structured following the MVC (Model-View-Controller) pattern to separate logic, UI, and data.
+
+State Management: GetX
+
+Authentication & Notifications: Firebase
+
+Local Data Storage: SQLite
+
